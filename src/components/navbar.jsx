@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./navbar.css";
 
 export function Navbar() {
@@ -11,10 +12,10 @@ export function Navbar() {
             <nav>
               <ul>
                 <li>
-                  <a href="#home">Home</a>
+                  <Link to="/">Dictionary</Link>
                 </li>
                 <li>
-                  <a href="#thesaurus">Thesaurus</a>
+                  <Link to="/thesaurus">Thesaurus</Link>
                 </li>
               </ul>
             </nav>

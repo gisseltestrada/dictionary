@@ -1,8 +1,13 @@
 import React from "react";
 import "./thesaurus.css";
+import { Navbar } from "../components/navbar";
+import { Footer } from "../components/footer"
+
 
 export function ThesaurusComponent(props) {
   return (
+    <>
+    <Navbar />
     <div className="parent-container">
       <div className="child-container">
         <p className="title">Thesaurus</p>
@@ -17,5 +22,7 @@ export function ThesaurusComponent(props) {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
