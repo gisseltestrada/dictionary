@@ -1,0 +1,43 @@
+/* Nav bar */
+.navbar{
+    height: 3rem;
+    background-color: white;
+    text-align: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+.navbar .nav-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-content: center;
+}
+
+.logo{
+   font-size: 1rem;
+   margin-left: .75rem;
+}
+
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    font-size: .75rem;
+    padding-top: 5px;
+}
+nav ul li a {
+    margin: 25px;
+    color: gray;
+    font-weight: 600;
+    text-decoration: none;
+    
+}
+
+nav ul li a:active {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    padding-bottom: 5px;
+}
