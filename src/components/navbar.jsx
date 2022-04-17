@@ -12,7 +12,7 @@ export function Navbar() {
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Dictionary</Link>
+                  <Link to="/" className="link-tag">Dictionary</Link>
                 </li>
                 <li>
                   <Link to="/thesaurus">Thesaurus</Link>
