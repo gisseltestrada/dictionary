@@ -37,7 +37,9 @@ nav ul li a {
 
 nav ul li a:active {
     color: rgb(0, 0, 0);
+    background-color: coral;
     text-decoration: none;
     border-bottom: 2px solid rgb(0, 0, 0);
     padding-bottom: 5px;
 }
+

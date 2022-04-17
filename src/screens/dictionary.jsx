@@ -11,7 +11,8 @@ export function DictionaryComponent(props) {
   const [word, setWord] = useState("");
   const [toggleCards, setToggleCards] = useState(false);
   const [meanings, setMeanings] = useState([]);
-  const [outputData, setOutputData] = useState(null);
+  const [error, setError] = useState(null);
+  //const [outputData, setOutputData] = useState(null);
   const apiURL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
   const handleUserInput = (event) => {
@@ -20,18 +21,38 @@ export function DictionaryComponent(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
     let url = apiURL + userInput;
-    const response = await axios.get(url);
-    if (response.status === 200) {
-      setWord(userInput);
-      setToggleCards(true);
-      let tempArray = [];
-      response.data.forEach((dictionaryObject) => {
-        dictionaryObject.meanings.forEach((meaning) => {
-          tempArray.push(meaning);
-        });
+    if (userInput) {
+      try {
+        const response = await axios.get(url);
+        if (response.status === 200) {
+          setWord(userInput);
+          setToggleCards(true);
+          let tempArray = [];
+          response.data.forEach((dictionaryObject) => {
+            dictionaryObject.meanings.forEach((meaning) => {
+              tempArray.push(meaning);
+            });
+          });
+          setMeanings(tempArray);
+        }
+      } catch (error) {
+        setMeanings([]);
+        if (axios.isAxiosError(error)) {
+          const serverError = error;
+          if (serverError) {
+            setError(serverError.response.data);
+          }
+        }
+      }
+    } else {
+      setMeanings([]);
+      setError({
+        title: "error",
+        message: "Nothing to search",
+        resolution: "Please type a word!",
       });
-      setMeanings(tempArray);
     }
   };
 
@@ -70,7 +91,18 @@ export function DictionaryComponent(props) {
           </div>
         </div>
       </div>
-      {toggleCards && renderInfoBoxes}
+      {error && (
+        <div className="handle-error">
+          <p>
+            {error.title}
+            <br />
+            {error.message}
+            <br />
+            {error.resolution}
+          </p>
+        </div>
+      )}
+      <div className="infobox-container">{toggleCards && renderInfoBoxes}</div>
       <Footer />
     </>
   );
