@@ -69,7 +69,7 @@ export function DictionaryComponent(props) {
 
   return (
     <>
-      <Navbar />
+      <Navbar typeOf="Dictionary"/>
       <div className="parent-container">
         <div className="child-container">
           <p className="title">Dictionary</p>
